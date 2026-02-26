@@ -57,6 +57,7 @@ void AItem::BeginPlay()
 void AItem::Tick(float DeltaTime)
 {
 	// Super::Tick(DeltaTime) calls the base class's implementation of Tick().
+	// The Super:: means that it is calling the Tick() function defined in the parent class (AActor in this case).
 	Super::Tick(DeltaTime);
 
 	// Prints the value of DeltaTime to the output log.
