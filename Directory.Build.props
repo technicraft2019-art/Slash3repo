@@ -1,0 +1,9 @@
+<Project>
+  <ItemGroup>
+    <!-- Suppress NuGet audit warning for Microsoft.Build advisory -->
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-w3q9-fxm7-j8fq" />
+  </ItemGroup>
+  <PropertyGroup>
+	<NuGetAudit>false</NuGetAudit>
+  </PropertyGroup>
+</Project>
