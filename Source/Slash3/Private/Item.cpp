@@ -39,18 +39,21 @@ void AItem::BeginPlay()
 	// GetWorld() is a member function of the AActor class that returns a pointer to the UWorld object that this actor belongs to.
 	UWorld* World = GetWorld();
 
-	// This checks if the World pointer is valid (not null) before attempting to use it. 
-	// Then it calls the DrawDebugSphere() function.
-	if (World)
-	{
-		// GetActorLocation() is a member function of the AActor class. 
-		// Calls AActor::GetActorLocation() and returns the current position as an FVector.
-		FVector Location = GetActorLocation();
-		// DRAW_SPHERE is a macro defined at the top of this file that takes a Location parameter and calls the 
-		// DrawDebugSphere() function with specific parameters to draw a red sphere at the given location in the world.
-		DRAW_SPHERE(Location);
-	}
+	// GetActorLocation() is a member function of the AActor class. 
+	// Calls AActor::GetActorLocation() and returns the current position as an FVector.
+	FVector Location = GetActorLocation();
 
+	// GetActorForwardVector() is a member function of the AActor class 
+	// that returns a unit vector representing the forward direction of the actor.
+	FVector Forward = GetActorForwardVector();
+
+	// DRAW_SPHERE is a macro defined Primary Project Module file. It takes a Location parameter and calls the 
+	// DrawDebugSphere() function with specific parameters to draw a red sphere at the given location in the world.
+	DRAW_SPHERE(Location);
+
+	// DRAW_LINE is a macro defined Primary Project Module file. It takes two parameters, StartLocation and EndLocation, and calls the
+	// DrawDebugLine() function is used to draw a line in the world for debugging purposes.
+	DRAW_LINE(Location, Location + Forward * 100.f);
 }
 
 // Called every frame
