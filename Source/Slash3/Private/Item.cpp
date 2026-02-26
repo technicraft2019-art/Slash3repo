@@ -12,18 +12,18 @@
 // Sets constructor default values
 AItem::AItem()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	// Set this actor to call Tick() every frame.
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-// Called when the game starts or when spawned
+// Calls the virtual function BeginPlay() override.
 void AItem::BeginPlay()
 {
 	// Super::BeginPlay() calls the base class's implementation of BeginPlay(). 
 	// This is important to ensure that any functionality defined in the base class is executed properly.
 	Super::BeginPlay();
 
-	// This log message uses unreals UE_LOG macro which takes 3 parameters: the log category, the log verbosity level, and the log message itself.
+	// Prints a message to the output log when the game starts.
 	UE_LOG(LogTemp, Warning, TEXT("Hello from Item class BeginPlay()"));
 
 	// GEngine is a global pointer to the game engine, which provides various functions and properties related to the game.
@@ -32,6 +32,7 @@ void AItem::BeginPlay()
 		// This log message uses the GEngine pointer to display a message on the screen. 
 		// It takes 4 parameters: a key (1 in this case), the duration to display the message (60 seconds),
 		// the color of the text (cyan), and the message itself.
+		// This is called when a "Print String" function in blueprint scripting is called and has 'Print to Log' checked 'true'
 		GEngine->AddOnScreenDebugMessage(1, 60.f, FColor::Cyan, FString("Item on Screen Message from BeginPlay() !!!"));
 	}
 
@@ -42,8 +43,8 @@ void AItem::BeginPlay()
 	// Then it calls the DrawDebugSphere() function.
 	if (World)
 	{
-		// GetActorLocation() is a member function of the AActor class that returns 
-		// the current location of the actor in the world as an FVector.
+		// GetActorLocation() is a member function of the AActor class. 
+		// Calls AActor::GetActorLocation() and returns the current position as an FVector.
 		FVector Location = GetActorLocation();
 		// DRAW_SPHERE is a macro defined at the top of this file that takes a Location parameter and calls the 
 		// DrawDebugSphere() function with specific parameters to draw a red sphere at the given location in the world.
