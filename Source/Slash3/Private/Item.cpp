@@ -24,7 +24,7 @@ void AItem::BeginPlay()
 	Super::BeginPlay();
 
 	// Prints a message to the output log when the game starts.
-	UE_LOG(LogTemp, Warning, TEXT("Hello from Item class BeginPlay()"));
+	UE_LOG(LogTemp, Warning, TEXT("Greetings from the Item class BeginPlay() Function !!!"));
 
 	// GEngine is a global pointer to the game engine, which provides various functions and properties related to the game.
 	if (GEngine)
@@ -32,8 +32,8 @@ void AItem::BeginPlay()
 		// This log message uses the GEngine pointer to display a message on the screen. 
 		// It takes 4 parameters: a key (1 in this case), the duration to display the message (60 seconds),
 		// the color of the text (cyan), and the message itself.
-		// This is called when a "Print String" function in blueprint scripting is called and has 'Print to Log' checked 'true'
-		GEngine->AddOnScreenDebugMessage(1, 60.f, FColor::Cyan, FString("Item on Screen Message from BeginPlay() !!!"));
+		// This is called when a "Print String" function in blueprint scripting is called and has 'Print to Screen' checked 'true'
+		GEngine->AddOnScreenDebugMessage(1, 60.f, FColor::Cyan, FString("Greetings from the Item Class BeginPlay() Function !!!"));
 	}
 
 	// GetWorld() is a member function of the AActor class that returns a pointer to the UWorld object that this actor belongs to.
@@ -59,30 +59,5 @@ void AItem::Tick(float DeltaTime)
 	// Super::Tick(DeltaTime) calls the base class's implementation of Tick().
 	// The Super:: means that it is calling the Tick() function defined in the parent class (AActor in this case).
 	Super::Tick(DeltaTime);
-
-	// Prints the value of DeltaTime to the output log.
-	UE_LOG(LogTemp, Warning, TEXT("DeltaTime: %f"), DeltaTime);
-
-	// GEngine is a global pointer to the game engine, which provides various functions and properties related to the game.
-	if (GEngine)
-	{
-		// Get the name of the item using the GetName() function, which is inherited from the UObject class.
-		FString Name = GetName();
-
-		// Create a formatted message string that includes the name of the item. 
-		// The FString::Printf function is used to format the string, similar to printf in C.
-		// The * operator is used to dereference the FString and get a pointer to the underlying character array, 
-		// which is required for the %s format specifier.
-		FString Message = FString::Printf(TEXT("Item Name: %s"), *Name);
-
-		// This log message uses the GEngine pointer to display a message on the screen. 
-		// It takes 4 parameters: a key (1 in this case), the duration to display the message (60 seconds),
-		// the color of the text (cyan), and the message itself.
-		GEngine->AddOnScreenDebugMessage(1, 60.f, FColor::Cyan, Message);
-
-		// Prints the name of the item to the output log. 
-		// The * operator is used to dereference the FString and get a pointer to the underlying character array.
-		UE_LOG(LogTemp, Warning, TEXT("Item Name: %s"), *Name);
-	}
 }
 
