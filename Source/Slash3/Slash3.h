@@ -3,13 +3,29 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "DrawDebugHelpers.h"
 
-// This MACRO creates a simple way to draw a debug sphere in the world at a specified location.
-// It checks if the world context is valid using GetWorld(), and if so, 
-// it calls the DrawDebugSphere() function with specific parameters:
-#define DRAW_SPHERE(Location) if (GetWorld()) DrawDebugSphere(GetWorld(), Location, 25.f, 12, FColor::Red, true);
+// Debug helpers.
+// IMPORTANT:
+// These macros require a calling context that has GetWorld() available
+// (commonly AActor, UActorComponent, or a UObject that can return a valid UWorld*).
 
-// This MACRO creates a simple way to draw a debug line in the world between two specified locations.
-// It checks if the world context is valid using GetWorld(), and if so,
-// it calls the DrawDebugLine() function with specific parameters:
-#define DRAW_LINE(StartLocation, EndLocation) if (GetWorld()) DrawDebugLine(GetWorld(), StartLocation, EndLocation, FColor::Blue, true, -1.f, 0, 1.f);
+// Draw a persistent red debug sphere at Location.
+// Radius = 25, Segments = 12, Persistent = true
+#define DRAW_SPHERE(Location) \
+do { \
+    UWorld* __World = GetWorld(); \
+    if (__World) { \
+        DrawDebugSphere(__World, (Location), 25.f, 12, FColor::Red, true); \
+    } \
+} while (0)
+
+// Draw a persistent blue debug line from StartLocation to EndLocation.
+// Color = Blue, Persistent = true, Lifetime = -1 (infinite), DepthPriority = 0, Thickness = 1.0
+#define DRAW_LINE(StartLocation, EndLocation) \
+do { \
+    UWorld* __World = GetWorld(); \
+    if (__World) { \
+        DrawDebugLine(__World, (StartLocation), (EndLocation), FColor::Blue, true, -1.f, 0, 1.f); \
+    } \
+} while (0)

@@ -1,13 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "Item.h"
-#include "DrawDebugHelpers.h"
 #include "Slash3/Slash3.h"
-
-// This macro creates a simple way to draw a debug sphere in the world at a specified location.
-// It checks if the world context is valid using GetWorld(), and if so, 
-// it calls the DrawDebugSphere() function with specific parameters:
-// Macro is commented out here because it is already defined in Slash3.h, which is included in Item.h.
-/*  #define DRAW_SPHERE(Location) if (GetWorld()) DrawDebugSphere(GetWorld(), Location, 25.f, 12, FColor::Red, true);  */
 
 // Sets constructor default values
 AItem::AItem()
@@ -36,7 +29,8 @@ void AItem::BeginPlay()
 		GEngine->AddOnScreenDebugMessage(1, 60.f, FColor::Cyan, FString("Greetings from the Item Class BeginPlay() Function !!!"));
 	}
 
-	// GetWorld() is a member function of the AActor class that returns a pointer to the UWorld object that this actor belongs to.
+	// Cached world pointer used as a local staging point for testing new debug
+	// helpers before promoting them into project-wide macros in Slash3.h.
 	UWorld* World = GetWorld();
 
 	// GetActorLocation() is a member function of the AActor class. 
@@ -47,12 +41,13 @@ void AItem::BeginPlay()
 	// that returns a unit vector representing the forward direction of the actor.
 	FVector Forward = GetActorForwardVector();
 
-	// DRAW_SPHERE is a macro defined Primary Project Module file. It takes a Location parameter and calls the 
+	// DRAW_SPHERE is a macro defined in the project’s primary module header (Slash3.h).
 	// DrawDebugSphere() function with specific parameters to draw a red sphere at the given location in the world.
 	DRAW_SPHERE(Location);
 
-	// DRAW_LINE is a macro defined Primary Project Module file. It takes two parameters, StartLocation and EndLocation, and calls the
-	// DrawDebugLine() function is used to draw a line in the world for debugging purposes.
+	// DRAW_LINE is a macro defined in the project’s primary module header (Slash3.h).
+	// It validates GetWorld() and draws a persistent blue debug line between two locations
+	// using DrawDebugLine() with infinite lifetime and thickness of 1.0.
 	DRAW_LINE(Location, Location + Forward * 100.f);
 }
 
