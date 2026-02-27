@@ -15,6 +15,16 @@
 #include "DebugDemo1.h"
 #include "Slash3/DebugMacros.h"
 
+void ADebugDemo1::SpinThatSphere(float DeltaTime)
+{
+	float MovementSpeed = 50.f;
+	float RotationRate = 45.f;
+	AddActorWorldOffset(FVector(MovementSpeed * DeltaTime, 0.f, 0.f));
+	AddActorWorldRotation(FRotator(0.f, RotationRate * DeltaTime, 0.f));
+	DRAW_SPHERE_SingleFrame(GetActorLocation(), FColor::Cyan);
+	DRAW_VECTOR_SingleFrame(GetActorLocation(), GetActorLocation() + GetActorForwardVector() * 100.f, FColor::Green);
+}
+
 // Sets default values
 ADebugDemo1::ADebugDemo1()
 {
@@ -33,11 +43,6 @@ void ADebugDemo1::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	float MovementSpeed = 50.f;
-	float RotationRate = 45.f;
-	AddActorWorldOffset(FVector(MovementSpeed * DeltaTime, 0.f, 0.f));
-	AddActorWorldRotation(FRotator(0.f, RotationRate * DeltaTime, 0.f));
-	DRAW_SPHERE_SingleFrame(GetActorLocation(), FColor::Cyan);
-	DRAW_VECTOR_SingleFrame(GetActorLocation(), GetActorLocation() + GetActorForwardVector() * 100.f, FColor::Green);
+	SpinThatSphere(DeltaTime);
 }
 
