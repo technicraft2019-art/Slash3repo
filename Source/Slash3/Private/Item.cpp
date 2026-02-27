@@ -58,9 +58,6 @@ void AItem::BeginPlay()
 	#SetActorRotation(FRotator(0.f, 45.f, 0.f));
 	#endif
 
-
-
-
 	// GetActorLocation() is a member function of the AActor class. 
 	// Calls AActor::GetActorLocation() and returns the current position as an FVector.
 	FVector Location = GetActorLocation();
