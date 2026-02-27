@@ -47,10 +47,19 @@ void AItem::BeginPlay()
 	UWorld* World = GetWorld();
 
 	// Sets the default location of the actor before the "Location" FVector is initialized.
-	SetActorLocation(FVector(0.f, 0.f, 50.f));
+	// Blocked off for Testing purposes.
+	#if (0)
+	#SetActorLocation(FVector(0.f, 0.f, 50.f));
+	#endif
 
 	// Sets the default rotation of the actor.
-	SetActorRotation(FRotator(0.f, 45.f, 0.f));
+	// Blocked off for Testing purposes.
+	#if (0)
+	#SetActorRotation(FRotator(0.f, 45.f, 0.f));
+	#endif
+
+
+
 
 	// GetActorLocation() is a member function of the AActor class. 
 	// Calls AActor::GetActorLocation() and returns the current position as an FVector.
@@ -60,7 +69,11 @@ void AItem::BeginPlay()
 	// that returns a unit vector representing the forward direction of the actor.
 	FVector Forward = GetActorForwardVector();
 
+	// NewLocation - world-space position where the coordinate system will be visualized by DRAW_COORD_SYS.
 	FVector NewLocation(50.f, 100.f, 100.f);
+
+	// NewRotator  - rotation (Pitch, Yaw, Roll) applied to the drawn axes; initialized to zero
+	// meaning the axes will be aligned with the world orientation.
 	FRotator NewRotator(0.f, 0.f, 0.f);
 
 	FString NewString("Cool !!!");
