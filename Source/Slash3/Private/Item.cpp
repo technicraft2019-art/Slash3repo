@@ -42,13 +42,25 @@ void AItem::BeginPlay()
 	FVector Forward = GetActorForwardVector();
 
 	// DRAW_SPHERE is a macro defined in the project’s primary module header (Slash3.h).
-	// DrawDebugSphere() function with specific parameters to draw a red sphere at the given location in the world.
-	DRAW_SPHERE(Location);
+	// DrawDebugSphere() function with specific parameters to draw a Green sphere at the given location in the world.
+	DRAW_SPHERE_G(Location * 3.f);
 
 	// DRAW_LINE is a macro defined in the project’s primary module header (Slash3.h).
 	// It validates GetWorld() and draws a persistent blue debug line between two locations
 	// using DrawDebugLine() with infinite lifetime and thickness of 1.0.
-	DRAW_LINE(Location, Location + Forward * 100.f);
+	DRAW_LINE_G(Location * 3.f, (Location * 3.f) + (Forward * 100.f));
+
+	// DRAW_POINT is a macro defined in the project’s primary module header (Slash3.h).
+	// It validates GetWorld() and draws a persistent blue debug point at the given location in the world
+	// using DrawDebugPoint() with infinite lifetime and size of 20.
+	DRAW_POINT_G((Location * 3.f) + (Forward * 100.f));
+
+	// DRAW_SPHERE is a macro defined in the project’s primary module header (Slash3.h).
+	// DrawDebugSphere() function with specific parameters to draw a red sphere at the given location in the world.
+	DRAW_SPHERE(Location);
+
+	// DRAW_VECTOR is a macro defined in the project’s primary module header (Slash3.h).
+	DRAW_VECTOR(Location, Location + Forward * 100.f);
 }
 
 // Called every frame
