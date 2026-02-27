@@ -74,3 +74,26 @@ do { \
         DrawDebugDirectionalArrow(__World, StartLocation, EndLocation, 50.f, Color, true, -1.f, 0, 5.f); \
     } \
 } while (0)
+
+// Draws a persistent debug coordinate system at the Location and rotation specified.
+// Input Parameters for Location and Rotation, the rest are manually set
+#define DRAW_COORD_SYS(Location, Rotation) \
+do { \
+    UWorld* __World = GetWorld(); \
+    if (__World) \
+    { \
+        DrawDebugCoordinateSystem(__World, Location, Rotation, 15.f, true, -1.f, 0, 2.f); \
+    } \
+} while (0)
+
+// Draws a persistent debug string at the Location specified.
+// Input Parameters for Location, NewString and Color, the rest are manually set
+#define DRAW_STRING(Location, NewString, Color) \
+do { \
+    UWorld* __World = GetWorld(); \
+    if (__World) \
+    { \
+        DrawDebugString(__World, Location, NewString, nullptr, Color, -1.f, false, 3.F); \
+    } \
+} while (0)
+

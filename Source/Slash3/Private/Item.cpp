@@ -54,6 +54,11 @@ void AItem::BeginPlay()
 	// that returns a unit vector representing the forward direction of the actor.
 	FVector Forward = GetActorForwardVector();
 
+	FVector NewLocation(50.f, 100.f, 100.f);
+	FRotator NewRotator(0.f, 0.f, 0.f);
+
+	FString NewString("Cool !!!");
+
 	// DRAW_SPHERE is a macro defined in the project’s DebugMacros.h header (Slash3.h).
 	// DrawDebugSphere() function with specific parameters to draw a Green sphere at the given location in the world.
 	DRAW_SPHERE(Location * 3.f, FColor::Green);
@@ -77,6 +82,12 @@ void AItem::BeginPlay()
 
 	// DRAW_DIR_ARROW is a macro defined in the project’s DebugMacros.h header (Slash3.h).
 	DRAW_DIR_ARROW(Location, Location + Forward * -150.f, FColor::Purple);
+
+	// DRAW_DIR_ARROW is a macro defined in the project’s DebugMacros.h header (Slash3.h).
+	DRAW_COORD_SYS(NewLocation, NewRotator);
+
+	
+	DRAW_STRING(Location, NewString, FColor::Yellow);
 }
 
 // Called every frame
