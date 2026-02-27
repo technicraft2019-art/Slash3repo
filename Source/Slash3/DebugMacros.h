@@ -8,8 +8,8 @@
 // These macros require a calling context that has GetWorld() available
 // (commonly AActor, UActorComponent, or a UObject that can return a valid UWorld*).
 
-// Draw a persistent red debug sphere at Location.
-// Radius = 25, Segments = 12, Persistent = true
+// Draw a persistent debug sphere at Location.
+// Input Parameters for Location and Color, the rest are manually set
 #define DRAW_SPHERE(Location, Color) \
 do { \
     UWorld* __World = GetWorld(); \
@@ -18,8 +18,8 @@ do { \
     } \
 } while (0)
 
-// Draw a persistent blue debug line from StartLocation to EndLocation.
-// Color = Blue, Persistent = true, Lifetime = -1 (infinite), DepthPriority = 0, Thickness = 1.0
+// Draw a persistent debug line from one Location to another location.
+// Input Parameters for StartLocation, EndLocation and Color, the rest are manually set
 #define DRAW_LINE(StartLocation, EndLocation, Color) \
 do { \
     UWorld* __World = GetWorld(); \
@@ -28,8 +28,8 @@ do { \
     } \
 } while (0)
 
-// Draw a persistent blue debug point at Location.
-// Color = Blue, Persistent = true, Lifetime = -1 (infinite), DepthPriority = 0, Size = 20
+// Draw a persistent debug point at Location.
+// Input Parameters for Location and Color, the rest are manually set
 #define DRAW_POINT(Location, Color) \
 do { \
     UWorld* __World = GetWorld(); \
@@ -50,6 +50,8 @@ do { \
     } \
 } while (0)
 
+// Draws a persistent debug directional arrow from one Location to another location.
+// Input Parameters for StartLocation, EndLocation and Color, the rest are manually set
 #define DRAW_DIR_ARROW(StartLocation, EndLocation, Color) \
 do { \
     UWorld* __World = GetWorld(); \
