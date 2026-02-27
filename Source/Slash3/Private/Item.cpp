@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "Item.h"
-#include "Slash3/Slash3.h"
+#include "Slash3/DebugMacros.h"
 
 // Sets constructor default values
 AItem::AItem()
