@@ -1,3 +1,17 @@
+// ============================================================
+//  Copyright (c) 2026 Charles C. Poole Jr.
+//  d/b/a CPTechnicraft Interactive Studio
+//
+//  All Rights Reserved.
+//
+//  This software and associated source files are the intellectual
+//  property of Charles C. Poole Jr. Unauthorized copying,
+//  modification, distribution, or use without permission is
+//  prohibited except where expressly allowed.
+//
+//  Project: Slash3 (Unreal Engine)
+// ============================================================
+
 #pragma once
 
 #include "CoreMinimal.h"
