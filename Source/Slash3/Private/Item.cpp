@@ -46,6 +46,12 @@ void AItem::BeginPlay()
 	// helpers before promoting them into project-wide macros in Slash3.h.
 	UWorld* World = GetWorld();
 
+	// Sets the default location of the actor before the "Location" FVector is initialized.
+	SetActorLocation(FVector(0.f, 0.f, 50.f));
+
+	// Sets the default rotation of the actor.
+	SetActorRotation(FRotator(0.f, 45.f, 0.f));
+
 	// GetActorLocation() is a member function of the AActor class. 
 	// Calls AActor::GetActorLocation() and returns the current position as an FVector.
 	FVector Location = GetActorLocation();
@@ -86,7 +92,7 @@ void AItem::BeginPlay()
 	// DRAW_DIR_ARROW is a macro defined in the project’s DebugMacros.h header (Slash3.h).
 	DRAW_COORD_SYS(NewLocation, NewRotator);
 
-	
+	// DRAW_STRING is a macro defined in the project’s DebugMacros.h header (Slash3.h).
 	DRAW_STRING(Location, NewString, FColor::Yellow);
 }
 
