@@ -113,7 +113,7 @@ do { \
     UWorld* __World = GetWorld(); \
     if (__World) \
     { \
-        DrawDebugCoordinateSystem(__World, Location, Rotation, 15.f, true, -1.f, 0, 2.f); \
+        DrawDebugCoordinateSystem(__World, Location, Rotation, 50.f, true, -1.f, 0, 2.f); \
     } \
 } while (0)
 
@@ -122,7 +122,7 @@ do { \
     UWorld* __World = GetWorld(); \
     if (__World) \
     { \
-        DrawDebugCoordinateSystem(__World, Location, Rotation, 15.f, false, -1.f, 0, 2.f); \
+        DrawDebugCoordinateSystem(__World, Location, Rotation, 50.f, false, -1.f, 0, 2.f); \
     } \
 } while (0)
 
