@@ -15,13 +15,22 @@ AItem2::AItem2()
 void AItem2::BeginPlay()
 {
 	Super::BeginPlay();
+
+	int32 AvgInt = Avg<int32>(1, 3);
+	UE_LOG(LogTemp, Warning, TEXT("Avg of 1 and 3: %d"), AvgInt);
+
+	float AvgFloat = Avg<float>(3.45f, 7.86f);
+	UE_LOG(LogTemp, Warning, TEXT("Avg of 3.45 and 7.86: %f"), AvgFloat);
+
 }
 
+// Customized use of the Sin function
 float AItem2::TransformedSin()
 {
 	return Amplitude * FMath::Sin(RunningTime * TimeConstant);
 }
 
+//Customized use of the Cos function
 float AItem2::TransformedCos()
 {
 	return Amplitude * FMath::Cos(RunningTime * TimeConstant);

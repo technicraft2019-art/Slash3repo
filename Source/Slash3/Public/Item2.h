@@ -28,14 +28,27 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sine Parameters");
 	float TimeConstant = 5.f;
 
-	UFUNCTION(BlueprintPure)
+	UFUNCTION(BlueprintPure, Category = "My Math")
 	float TransformedSin();
 
-	UFUNCTION(BlueprintPure)
+	UFUNCTION(BlueprintPure, Category = "My Math")
 	float TransformedCos();
+
+	// Declaration of a function template, fpr a template named Avg() of type T.
+	template<typename T>
+	T Avg(T First, T Second);
 
 private:
 	// Keep the UPROPERTY and the member on the same line to avoid parser/IDE tokenization issues.
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "Sine Parameters");
 	float RunningTime = 0.f;
 };
+
+// Defintion of the type T function named Avg(), used with inline specifier for efficiency.
+// This Definition limits the template usage to types that can be used with the "+" and "/" operators.
+// This Definition lies outside the class Declaration, so it is visible to all .cpp files who implement it.
+template<typename T>
+inline T AItem2::Avg(T First, T Second)
+{
+	return (First + Second) / 2;
+}
