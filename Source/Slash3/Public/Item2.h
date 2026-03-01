@@ -29,10 +29,10 @@ protected:
 	float TimeConstant = 5.f;
 
 	UFUNCTION(BlueprintPure, Category = "My Math")
-	float TransformedSin();
+	float TransformedSin() const;
 
 	UFUNCTION(BlueprintPure, Category = "My Math")
-	float TransformedCos();
+	float TransformedCos() const;
 
 	// Declaration of a function template, fpr a template named Avg() of type T.
 	template<typename T>
@@ -42,6 +42,12 @@ private:
 	// Keep the UPROPERTY and the member on the same line to avoid parser/IDE tokenization issues.
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "Sine Parameters");
 	float RunningTime = 0.f;
+
+	// Creates a pointer to a UStaticMeshComponent and name it ItemMesh.
+	// Make this pointer visible in the editor details panel and instances in Unreal Engine Blueprints.
+	// It is not editable in the editor anywhere.
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* ItemMesh;
 };
 
 // Defintion of the type T function named Avg(), used with inline specifier for efficiency.

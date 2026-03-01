@@ -100,7 +100,10 @@ void AItem::BeginPlay()
 	DRAW_DIR_ARROW(Location, Location + Forward * -150.f, FColor::Purple);
 
 	// DRAW_DIR_ARROW is a macro defined in the project’s DebugMacros.h header (Slash3.h).
-	DRAW_COORD_SYS(NewLocation, NewRotator);
+	// Commented out to verify other usage. 
+	#if (0)
+	#DRAW_COORD_SYS(NewLocation, NewRotator);
+	#endif
 
 	// DRAW_STRING is a macro defined in the project’s DebugMacros.h header (Slash3.h).
 	DRAW_STRING(Location, NewString, FColor::Yellow);

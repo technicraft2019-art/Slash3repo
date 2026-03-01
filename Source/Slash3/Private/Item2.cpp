@@ -9,6 +9,11 @@ AItem2::AItem2()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	// Create and register a UStaticMeshComponent default subobject and store its pointer in ItemMesh.
+	ItemMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ItemMeshComponent"));
+	// Replaces the RootComponent with the component stored in ItemMesh.
+	RootComponent = ItemMesh;
 }
 
 // Called when the game starts or when spawned
@@ -16,22 +21,17 @@ void AItem2::BeginPlay()
 {
 	Super::BeginPlay();
 
-	int32 AvgInt = Avg<int32>(1, 3);
-	UE_LOG(LogTemp, Warning, TEXT("Avg of 1 and 3: %d"), AvgInt);
-
-	float AvgFloat = Avg<float>(3.45f, 7.86f);
-	UE_LOG(LogTemp, Warning, TEXT("Avg of 3.45 and 7.86: %f"), AvgFloat);
-
+	DRAW_COORD_SYS(FVector::ZeroVector, FRotator::ZeroRotator);
 }
 
 // Customized use of the Sin function
-float AItem2::TransformedSin()
+float AItem2::TransformedSin() const
 {
 	return Amplitude * FMath::Sin(RunningTime * TimeConstant);
 }
 
 //Customized use of the Cos function
-float AItem2::TransformedCos()
+float AItem2::TransformedCos() const
 {
 	return Amplitude * FMath::Cos(RunningTime * TimeConstant);
 }
@@ -49,5 +49,8 @@ void AItem2::Tick(float DeltaTime)
 	// AddActorWorldOffset(FVector(0.f, 0.f, DeltaZ));
 	DRAW_SPHERE_SingleFrame(Location, FColor::Blue);
 	DRAW_VECTOR_SingleFrame(Location, Location + Forward * 100.f, FColor::Blue);
+
+	FVector AvgVector = Avg<FVector>(GetActorLocation(), FVector::ZeroVector);
+	DRAW_POINT_SingleFrame(AvgVector, FColor::Cyan);
 }
 
