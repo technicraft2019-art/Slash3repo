@@ -17,17 +17,27 @@ void AItem2::BeginPlay()
 	Super::BeginPlay();
 }
 
+float AItem2::TransformedSin()
+{
+	return Amplitude * FMath::Sin(RunningTime * TimeConstant);
+}
+
+float AItem2::TransformedCos()
+{
+	return Amplitude * FMath::Cos(RunningTime * TimeConstant);
+}
+
 // Called every frame
 void AItem2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 	RunningTime += DeltaTime;
-	float DeltaZ = Amplitude * FMath::Sin(RunningTime * TimeConstant);
+	// float DeltaZ = Amplitude * FMath::Sin(RunningTime * TimeConstant);
 	FVector Location = GetActorLocation();
 	FVector Forward = GetActorForwardVector();
 
-	AddActorWorldOffset(FVector(0.f, 0.f, DeltaZ));
+	// AddActorWorldOffset(FVector(0.f, 0.f, DeltaZ));
 	DRAW_SPHERE_SingleFrame(Location, FColor::Blue);
 	DRAW_VECTOR_SingleFrame(Location, Location + Forward * 100.f, FColor::Blue);
 }
