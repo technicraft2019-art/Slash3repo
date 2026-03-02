@@ -46,7 +46,7 @@ private:
 	// Creates a pointer to a UStaticMeshComponent and name it ItemMesh.
 	// Make this pointer visible in the editor details panel and instances in Unreal Engine Blueprints.
 	// It is not editable in the editor anywhere.
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* ItemMesh;
 };
 

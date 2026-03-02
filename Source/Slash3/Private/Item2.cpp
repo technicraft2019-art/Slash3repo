@@ -10,9 +10,9 @@ AItem2::AItem2()
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	// Create and register a UStaticMeshComponent default subobject and store its pointer in ItemMesh.
+	// Creates and registers a UStaticMeshComponent default subobject and stores it in the ItemMesh pointer.
 	ItemMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ItemMeshComponent"));
-	// Replaces the RootComponent with the component stored in ItemMesh.
+	// Sets the RootComponent with the value the ItemMesh pointer is pointing at.
 	RootComponent = ItemMesh;
 }
 
