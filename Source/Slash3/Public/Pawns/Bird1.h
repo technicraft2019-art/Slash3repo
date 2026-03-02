@@ -22,4 +22,10 @@ public:
 protected:
 
 	virtual void BeginPlay() override;
+
+private:
+
+	// Declaring the variable pointer for the future Caspusle Component.
+	UPROPERTY(VisibleAnywhere)
+	class UCapsuleComponent* Capsule;
 };
