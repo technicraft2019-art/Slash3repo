@@ -3,7 +3,7 @@
 #include "Pawns/Bird1.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
-#include "Components/InputComponent.h"
+// #include "Components/InputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 
@@ -37,11 +37,6 @@ void ABird1::BeginPlay()
 	}
 }
 
-void ABird1::MoveForward(float Value)
-{
-	UE_LOG(LogTemp, Warning, TEXT("Value: %f"), Value);
-}
-
 void ABird1::Move(const FInputActionValue& Value)
 {
 	const bool CurrentValue = Value.Get<bool>();
@@ -65,8 +60,4 @@ void ABird1::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	{
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ABird1::Move);
 	}
-
-
-
-	// PlayerInputComponent->BindAxis(FName("MoveForward"), this, &ABird1::MoveForward);
 }
