@@ -6,6 +6,8 @@
 #include "GameFramework/Pawn.h"
 #include "Bird1.generated.h"
 
+class USkeletalMeshComponent;
+
 UCLASS()
 class SLASH3_API ABird1 : public APawn
 {
@@ -23,9 +25,14 @@ protected:
 
 	virtual void BeginPlay() override;
 
+	void MoveForward(float Value);
+
 private:
 
 	// Declaring the variable pointer for the future Caspusle Component.
 	UPROPERTY(VisibleAnywhere)
 	class UCapsuleComponent* Capsule;
+
+	UPROPERTY(VisibleAnywhere)
+	USkeletalMeshComponent* BirdMesh;
 };
