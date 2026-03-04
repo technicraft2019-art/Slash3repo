@@ -11,6 +11,7 @@ class USkeletalMeshComponent;
 class UInputMappingContext;
 class UInputAction;
 class UPawnMovementComponent;
+class UCapsuleComponent;
 
 UCLASS()
 class SLASH3_API ABird1 : public APawn
@@ -41,7 +42,7 @@ private:
 
 	// Declaring the variable pointer for the future Caspusle Component.
 	UPROPERTY(VisibleAnywhere)
-	class UCapsuleComponent* Capsule;
+	UCapsuleComponent* Capsule;
 
 	UPROPERTY(VisibleAnywhere)
 	USkeletalMeshComponent* BirdMesh;

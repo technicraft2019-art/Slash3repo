@@ -4,8 +4,10 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/FloatingPawnMovement.h"
+#include "GameFramework/PlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "Engine/LocalPlayer.h"
 
 ABird1::ABird1()
 {
