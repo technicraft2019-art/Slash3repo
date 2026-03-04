@@ -10,6 +10,7 @@
 class USkeletalMeshComponent;
 class UInputMappingContext;
 class UInputAction;
+class UPawnMovementComponent;
 
 UCLASS()
 class SLASH3_API ABird1 : public APawn
@@ -44,4 +45,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	USkeletalMeshComponent* BirdMesh;
+
+	UPROPERTY(VisibleAnywhere)
+	UPawnMovementComponent* MovementComponent;
 };

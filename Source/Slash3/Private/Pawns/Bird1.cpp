@@ -3,7 +3,7 @@
 #include "Pawns/Bird1.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/SkeletalMeshComponent.h"
-// #include "Components/InputComponent.h"
+#include "GameFramework/FloatingPawnMovement.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 
@@ -19,6 +19,8 @@ ABird1::ABird1()
 
 	BirdMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("BirdMesh"));
 	BirdMesh->SetupAttachment(GetRootComponent());
+
+	MovementComponent = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("FloatingMovementComponent"));
 
 	// Makes the controller possess this pawn.
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
@@ -39,9 +41,12 @@ void ABird1::BeginPlay()
 
 void ABird1::Move(const FInputActionValue& Value)
 {
-	const bool CurrentValue = Value.Get<bool>();
-	if (CurrentValue)
+	const float DirectionValue = Value.Get<float>();
+	if (Controller && (DirectionValue != 0.f))
 	{
+		FVector Forward = GetActorForwardVector();
+		AddMovementInput(Forward, DirectionValue);
+
 		UE_LOG(LogTemp, Warning, TEXT("IA_Move triggered !!"));
 	}
 }
