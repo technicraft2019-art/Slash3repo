@@ -12,6 +12,8 @@ class UInputMappingContext;
 class UInputAction;
 class UPawnMovementComponent;
 class UCapsuleComponent;
+class USpringArmComponent;
+class UCameraComponent;
 
 UCLASS()
 class SLASH3_API ABird1 : public APawn
@@ -36,7 +38,11 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputAction* MoveAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
+	UInputAction* LookAction;
+
 	void Move(const FInputActionValue& Value);
+	void Look(const FInputActionValue& Value);
 
 private:
 
@@ -49,4 +55,10 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	UPawnMovementComponent* MovementComponent;
+
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* SpringArm;
+
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* ViewCamera;
 };
