@@ -1,4 +1,6 @@
 // Copyright (c) 2026 Charles C. Poole Jr.   d/b/a CPTechnicraft Interactive Studio
+// UnrealEngine 5.6.1 with Visual Studio 2026 (In virtual 2022 mode)
+// Bird1.cpp Pawn with movement and mouse look functionality.
 
 #include "Pawns/Bird1.h"
 #include "Components/CapsuleComponent.h"
@@ -19,6 +21,7 @@ ABird1::ABird1()
 	Capsule = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule"));
 	Capsule->SetCapsuleHalfHeight(20.f);
 	Capsule->SetCapsuleRadius(15.f);
+	Capsule->SetCollisionProfileName(TEXT("Pawn"));
 	SetRootComponent(Capsule);
 
 	BirdMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("BirdMesh"));

@@ -1,4 +1,5 @@
 // Copyright (c) 2026 Charles C. Poole Jr.   d/b/a CPTechnicraft Interactive Studio
+// UnrealEngine 5.6.1 with Visual Studio 2026 (In virtual 2022 mode)
 
 #pragma once
 
